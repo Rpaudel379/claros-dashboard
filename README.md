@@ -2,7 +2,7 @@
 
 - Compound Component pattern: `Dashboard`, `Dashboard.Sidebar`, `Dashboard.Main`, `Dashboard.Toggle`
 - State management with **Redux Toolkit + Thunk** for async updates
-- Search by **name, state, street, city**
+- Search by **name, state, street, city** with debouncing the input
 - Filter records by **city**
 - Pagination with **Next / Prev** and **Jump to page**
 - Responsive UI + Collapsible Sidebar (TailwindCSS)
