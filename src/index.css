@@ -4,4 +4,23 @@
   .link {
     @apply cursor-pointer p-2 rounded-md text-xl hover:text-neutral-700 hover:bg-neutral-200;
   }
+
+  .pagination-link {
+    @apply flex items-center text-xl cursor-pointer hover:text-neutral-700;
+  }
+
+  table th,
+  table td {
+    text-align: left;
+    padding: 12px;
+  }
+
+  table tr {
+    @apply border-b-neutral-200 border-b-[0.5px];
+  }
+
+  .header,
+  table tr:hover {
+    @apply bg-neutral-100 cursor-pointer;
+  }
 }

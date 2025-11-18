@@ -66,7 +66,7 @@ const Sidebar: FC<SidebarProps> = ({ children }) => {
         className={`
           fixed md:static z-30 top-0 left-0 bottom-0 bg-neutral-50 shadow-md
           transition-all duration-300
-          ${isCollapsed ? "w-0" : "w-64"}
+          ${isCollapsed ? "w-0" : "w-52"}
           ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
           overflow-hidden
         `}
