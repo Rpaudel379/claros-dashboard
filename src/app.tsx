@@ -1,4 +1,5 @@
 import { Dashboard } from "./components/dashboard/dashboard";
+import { Content } from "./components/dashboard/content";
 
 export const App = () => {
   return (
@@ -34,6 +35,8 @@ export const App = () => {
               as comment and rate existing listings.
             </p>
           </div>
+
+          <Content />
         </Dashboard.Main>
       </Dashboard>
     </div>

@@ -1,28 +1,47 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import type { DashboardState } from "../types";
 
-type Dashboard = {
-  name: string;
-  age: number;
-};
-
-const initialState: Dashboard = {
-  name: "Anish",
-  age: 25,
+const initialState: DashboardState = {
+  items: [],
+  loading: true,
+  error: null,
 };
 
 const dashboardSlice = createSlice({
   name: "dashboard",
   initialState,
-  reducers: {
-    setName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
-    },
-    setAge: (state, action: PayloadAction<number>) => {
-      state.age = action.payload;
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchRestrooms.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchRestrooms.fulfilled, (state, action) => {
+        state.loading = false;
+
+        state.items = action.payload;
+      })
+      .addCase(fetchRestrooms.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message ?? "Please try again.";
+      });
   },
 });
 
-export const { setName, setAge } = dashboardSlice.actions;
+export const fetchRestrooms = createAsyncThunk(
+  "items/fetch",
+  async (page: number) => {
+    const response = await fetch(
+      `https://www.refugerestrooms.org/api/v1/restrooms/search?page=${
+        page ?? 1
+      }&per_page=50&query=United%20States`
+    );
+
+    if (!response.ok) throw new Error("Failed to fetch items");
+
+    return await response.json();
+  }
+);
 
 export const dashboardReducer = dashboardSlice.reducer;
