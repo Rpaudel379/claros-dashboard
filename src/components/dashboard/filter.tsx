@@ -20,7 +20,7 @@ const Filter = ({ uniqueCities, filter }: Props) => {
   }, 500);
 
   return (
-    <div className="max-w-lvh mx-auto p-5 mb-10 bg-neutral-50 rounded-lg space-y-5">
+    <div className="w-full md:max-w-5xl mx-auto p-5 mb-10 bg-neutral-50 rounded-lg space-y-5">
       <div className="relative lg:max-w-2/3 border border-neutral-200 bg-neutral-100 p-4 rounded-lg">
         <input
           type="text"
